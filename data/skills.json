@@ -1,0 +1,6 @@
+[
+  { "category": "기획 & 전략", "items": ["서비스 기획", "프로모션 기획", "Co-Marketing", "CRM 기획", "콘텐츠 전략", "UX 기획"] },
+  { "category": "마케팅", "items": ["SNS 마케팅", "라이브 커머스", "퍼포먼스 마케팅", "CRM 마케팅", "브랜드 마케팅"] },
+  { "category": "협업 & 툴", "items": ["Figma", "Notion", "Slack", "Jira", "Google Analytics", "Amplitude"] },
+  { "category": "콘텐츠 제작", "items": ["PowerPoint", "Keynote", "Adobe Photoshop", "Canva", "영상 편집"] }
+]

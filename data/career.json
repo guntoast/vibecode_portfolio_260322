@@ -1,0 +1,34 @@
+[
+  {
+    "id": "kbank",
+    "company": "케이뱅크",
+    "role": "서비스기획",
+    "period": "2023.09 ~ 현재",
+    "description": "서비스기획, 광고, 마케팅 캠페인 운영.",
+    "type": "fulltime"
+  },
+  {
+    "id": "lotte-world-2",
+    "company": "롯데월드 어드벤처",
+    "role": "마케팅팀 / 프로모션 기획",
+    "period": "2019.02 ~ 2023.09",
+    "description": "Co-Marketing, On/Offline 프로모션 기획 및 실행. 외부 브랜드 제휴 협상부터 캠페인 전략 수립, 실행까지 전 과정 담당.",
+    "type": "fulltime"
+  },
+  {
+    "id": "lotte-world-1",
+    "company": "롯데월드 어드벤처",
+    "role": "마케팅팀 / 프로모션 기획 (인턴)",
+    "period": "2018.07 ~ 2018.08",
+    "description": "프로모션 기획 인턴으로 현장 운영 및 콘텐츠 기획 보조.",
+    "type": "intern"
+  },
+  {
+    "id": "disual",
+    "company": "디주얼 (D.SUDL)",
+    "role": "창업 / SNS 채널 운영 및 콘텐츠 기획",
+    "period": "2017.01 ~ 2018.06",
+    "description": "중고대학생 타겟 PPT 콘텐츠 제작 업체 창업. SNS 채널 운영, PPT 템플릿 제작 및 외주 사업 전개.",
+    "type": "founder"
+  }
+]
