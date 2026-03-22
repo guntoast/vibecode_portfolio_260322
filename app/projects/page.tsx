@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description: '김혜은이 기획·실행한 마케팅 및 서비스 기획 프로젝트 목록입니다.',
 };
 
-export default function ProjectsPage() {
-  const projects = getProjects();
+export default async function ProjectsPage() {
+  const projects = await getProjects();
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">

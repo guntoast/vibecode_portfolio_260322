@@ -10,9 +10,8 @@ export const metadata: Metadata = {
   description: '브랜드와 사람을 잇는 기획자, 김혜은의 포트폴리오입니다.',
 };
 
-export default function HomePage() {
-  const careers = getCareer();
-  const skills = getSkills();
+export default async function HomePage() {
+  const [careers, skills] = await Promise.all([getCareer(), getSkills()]);
 
   return (
     <>

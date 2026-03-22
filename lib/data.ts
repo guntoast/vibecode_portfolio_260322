@@ -1,25 +1,56 @@
-// 추후 API/DB로 교체 시 이 파일만 수정하면 됩니다
-import projectsData from '@/data/projects.json';
-import careerData from '@/data/career.json';
-import skillsData from '@/data/skills.json';
+import { unstable_noStore as noStore } from 'next/cache';
+import { supabase } from '@/lib/supabase';
 import type { Project, Career, SkillGroup } from '@/types';
 
-export function getProjects(): Project[] {
-  return projectsData as Project[];
+export async function getProjects(): Promise<Project[]> {
+  const { data, error } = await supabase
+    .from('projects')
+    .select('*')
+    .order('id', { ascending: false });
+
+  if (error) throw new Error(error.message);
+  return (data ?? []) as Project[];
 }
 
-export function getActiveProjects(): Project[] {
-  return (projectsData as Project[]).filter(p => !p._placeholder);
+export async function getActiveProjects(): Promise<Project[]> {
+  const { data, error } = await supabase
+    .from('projects')
+    .select('*')
+    .neq('_placeholder', true)
+    .order('id', { ascending: false });
+
+  if (error) throw new Error(error.message);
+  return (data ?? []) as Project[];
 }
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return (projectsData as Project[]).find(p => p.slug === slug);
+export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
+  const { data, error } = await supabase
+    .from('projects')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+
+  if (error) return undefined;
+  return data as Project;
 }
 
-export function getCareer(): Career[] {
-  return careerData as Career[];
+export async function getCareer(): Promise<Career[]> {
+  const { data, error } = await supabase
+    .from('career')
+    .select('*')
+    .order('id', { ascending: true });
+
+  if (error) throw new Error(error.message);
+  return (data ?? []) as Career[];
 }
 
-export function getSkills(): SkillGroup[] {
-  return skillsData as SkillGroup[];
+export async function getSkills(): Promise<SkillGroup[]> {
+  noStore();
+  const { data, error } = await supabase
+    .from('skills')
+    .select('*')
+    .order('id', { ascending: true });
+
+  if (error) throw new Error(error.message);
+  return (data ?? []) as SkillGroup[];
 }

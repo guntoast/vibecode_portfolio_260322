@@ -12,12 +12,12 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const projects = getProjects();
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug);
+  const project = await getProjectBySlug(params.slug);
   if (!project || project._placeholder) {
     return { title: '프로젝트 | 김혜은 포트폴리오' };
   }
@@ -27,8 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProjectDetailPage({ params }: Props) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: Props) {
+  const [project, activeProjects] = await Promise.all([
+    getProjectBySlug(params.slug),
+    getActiveProjects(),
+  ]);
 
   if (!project) {
     notFound();
@@ -38,7 +41,6 @@ export default function ProjectDetailPage({ params }: Props) {
     redirect('/projects');
   }
 
-  const activeProjects = getActiveProjects().sort((a, b) => b.id - a.id);
   const currentIndex = activeProjects.findIndex((p) => p.slug === params.slug);
   const prevProject = currentIndex < activeProjects.length - 1 ? activeProjects[currentIndex + 1] : null;
   const nextProject = currentIndex > 0 ? activeProjects[currentIndex - 1] : null;
