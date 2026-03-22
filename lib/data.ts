@@ -38,7 +38,7 @@ export async function getCareer(): Promise<Career[]> {
   const { data, error } = await supabase
     .from('career')
     .select('*')
-    .order('id', { ascending: true });
+    .order('id', { ascending: false });
 
   if (error) throw new Error(error.message);
   return (data ?? []) as Career[];
